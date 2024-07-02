@@ -6,17 +6,17 @@
 /*   By: nleoni <nleoni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 20:05:02 by nleoni            #+#    #+#             */
-/*   Updated: 2024/06/14 21:18:09 by nleoni           ###   ########.fr       */
+/*   Updated: 2024/07/01 23:07:43 by nleoni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra(t_list *list, int a)
+void	r(t_list *list)
 {
 	t_case	*first;
 	t_case	*tmp;
-	
+
 	if (list->size < 2)
 		return ;
 	first = list->first;
@@ -26,31 +26,26 @@ void	ra(t_list *list, int a)
 		tmp = tmp->next;
 	tmp->next = first;
 	tmp->next->next = NULL;
-	if (a)
-		write(1, "ra\n", 3);
 }
 
-void	rb(t_list *stack_b, int a)
+void	do_ra(t_list *list, t_final *final)
 {
-	t_case	*first;
-	t_case	*tmp;
-	
-	if (stack_b->size < 2)
-		return ;
-	first = stack_b->first;
-	stack_b->first = stack_b->first->next;
-	tmp = stack_b->first;
-	while (tmp->next != NULL)
-		tmp = tmp->next;
-	tmp->next = first;
-	tmp->next->next = NULL;
-	if (a)
-		write(1, "rb\n", 3);
+	r(list);
+	final->moves++;
+	write(1, "ra\n", 3);
 }
 
-void	rr(t_list *list, t_list *stack_b, int a)
+void	do_rb(t_list *stack_b, t_final *final)
 {
-	ra(list, a);
-	rb(stack_b, a);
+	r(stack_b);
+	final->moves++;
+	write(1, "rb\n", 3);
+}
+
+void	do_rr(t_list *list, t_list *stack_b, t_final *final)
+{
+	r(list);
+	r(stack_b);
+	final->moves++;
 	write(1, "rr\n", 3);
 }

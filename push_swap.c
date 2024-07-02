@@ -6,7 +6,7 @@
 /*   By: nleoni <nleoni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 18:23:22 by nleoni            #+#    #+#             */
-/*   Updated: 2024/06/25 17:36:53 by nleoni           ###   ########.fr       */
+/*   Updated: 2024/06/29 18:24:41 by nleoni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,6 @@ char	*ft_substr2(char const *s, unsigned int start, size_t len)
 	return (dest);
 }
 
-int	is_digit3(char c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
-
-int	is_digit2(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if ((str[i] < '0' && str[i] > '9') || str[i] == ' ')
-			return (1);
-	}
-	return (0);
-}
-
 int	ft_new_atoi(t_list *list, char **str, t_case *new)
 {
 	int					tab[2];
@@ -95,7 +75,9 @@ int	main(int ac, char **av)
 {
 	t_list	*list;
 	t_list	*stack_b;
+	t_final	final;
 
+	final = (t_final){0};
 	list = NULL;
 	stack_b = NULL;
 	if (ac < 2)
@@ -104,7 +86,7 @@ int	main(int ac, char **av)
 	if (!list)
 		return (1);
 	stack_b = lst_init_b();
-	algo_init(list, stack_b);
+	algo_init(list, stack_b, &final);
 	// print_stack(list);
 	delete_stack(list);
 	delete_stack(stack_b);

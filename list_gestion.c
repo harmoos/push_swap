@@ -6,7 +6,7 @@
 /*   By: nleoni <nleoni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 01:38:30 by nleoni            #+#    #+#             */
-/*   Updated: 2024/06/19 22:48:46 by nleoni           ###   ########.fr       */
+/*   Updated: 2024/06/30 16:16:03 by nleoni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,19 @@ void	delete_stack(t_list *list)
 		current = next_node;
 	}
 	free(list);
+}
+
+void	final_re_inicialize(t_final *final)
+{
+	final->pos = 1;
+	final->target = 0;
+	final->cost = 0;
+}
+
+void	final_rr_init(t_final *final)
+{
+	final->ra = 0;
+	final->rb = 0;
+	final->rra = 0;
+	final->rrb = 0;
 }
